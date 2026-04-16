@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PDFParse } from "pdf-parse";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import { askAi } from "../services/openRouter.service.js";
 
 /** Max characters sent to the AI (keeps token usage reasonable). */
@@ -210,10 +210,18 @@ export const analyzeResumeAndFetchJobs = async (req, res) => {
       return res.status(400).json({ message: "Only PDF files are allowed." });
     }
 
-    // --- 1) PDF → text (pdf-parse v2 API) ---
-    parser = new PDFParse({ data: req.file.buffer });
-    const textResult = await parser.getText();
-    const fullText = (textResult?.text || "").trim();
+    // --- 1) PDF → text using pdfjs-dist (more robust) ---
+    const uint8Array = new Uint8Array(req.file.buffer);
+    const pdf = await pdfjsLib.getDocument({ data: uint8Array }).promise;
+    let fullText = "";
+
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+      const page = await pdf.getPage(pageNum);
+      const content = await page.getTextContent();
+      const pageText = content.items.map((item) => item.str).join(" ");
+      fullText += pageText + "\n";
+    }
+    fullText = fullText.trim();
 
     if (!fullText || fullText.length < 30) {
       return res.status(400).json({
@@ -293,13 +301,7 @@ export const analyzeResumeAndFetchJobs = async (req, res) => {
           : "Something went wrong processing your resume.",
     });
   } finally {
-    if (parser && typeof parser.destroy === "function") {
-      try {
-        await parser.destroy();
-      } catch (_) {
-        /* ignore */
-      }
-    }
+    /* Cleanup if needed */
   }
 };
 
