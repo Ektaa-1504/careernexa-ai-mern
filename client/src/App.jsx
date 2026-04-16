@@ -16,7 +16,7 @@ import MockTestHistoryPage from "./pages/MockTestHistoryPage";
 import JobAnalyzerPage from "./pages/JobAnalyzerPage";
 import ResumeJobsPage from "./pages/ResumeJobsPage";
 
-export const ServerUrl = "http://localhost:8000";
+export const ServerUrl = "https://careernexa-ai-mern.onrender.com";
 
 function App() {
   const dispatch = useDispatch();
