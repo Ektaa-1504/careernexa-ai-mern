@@ -1,0 +1,252 @@
+{
+  "DSA": [
+    {
+      "id": "dsa-1",
+      "question": "What is the time complexity of binary search on a sorted array of size n?",
+      "options": ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+      "correctAnswer": "O(log n)"
+    },
+    {
+      "id": "dsa-2",
+      "question": "Which data structure follows FIFO (First In First Out)?",
+      "options": ["Stack", "Queue", "Heap", "Trie"],
+      "correctAnswer": "Queue"
+    },
+    {
+      "id": "dsa-3",
+      "question": "In a binary tree, what is the maximum number of nodes at depth d (root at depth 0)?",
+      "options": ["d", "2^d", "d^2", "2d"],
+      "correctAnswer": "2^d"
+    },
+    {
+      "id": "dsa-4",
+      "question": "Which algorithm is commonly used for shortest paths in a weighted graph with non-negative edges?",
+      "options": ["DFS", "BFS", "Dijkstra's", "Kruskal's"],
+      "correctAnswer": "Dijkstra's"
+    },
+    {
+      "id": "dsa-5",
+      "question": "What is the average-case time complexity of quicksort?",
+      "options": ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"],
+      "correctAnswer": "O(n log n)"
+    },
+    {
+      "id": "dsa-6",
+      "question": "A complete binary tree with n nodes has height approximately:",
+      "options": ["n", "log n", "n/2", "sqrt(n)"],
+      "correctAnswer": "log n"
+    },
+    {
+      "id": "dsa-7",
+      "question": "Which traversal visits: Left, Root, Right?",
+      "options": ["Preorder", "Inorder", "Postorder", "Level order"],
+      "correctAnswer": "Inorder"
+    },
+    {
+      "id": "dsa-8",
+      "question": "Hash tables provide average O(1) for insert and lookup when:",
+      "options": ["Hash function is perfect", "Load factor is managed and collisions handled", "Array size equals n", "Keys are sorted"],
+      "correctAnswer": "Load factor is managed and collisions handled"
+    }
+  ],
+  "DBMS": [
+    {
+      "id": "dbms-1",
+      "question": "Which SQL clause is used to filter rows before grouping?",
+      "options": ["HAVING", "WHERE", "GROUP BY", "ORDER BY"],
+      "correctAnswer": "WHERE"
+    },
+    {
+      "id": "dbms-2",
+      "question": "What does ACID stand for in database transactions?",
+      "options": [
+        "Atomicity, Consistency, Isolation, Durability",
+        "Accuracy, Concurrency, Integrity, Distribution",
+        "Access, Control, Index, Data",
+        "Analysis, Cache, Insert, Delete"
+      ],
+      "correctAnswer": "Atomicity, Consistency, Isolation, Durability"
+    },
+    {
+      "id": "dbms-3",
+      "question": "Which normal form removes partial dependency of non-key attributes on part of a composite key?",
+      "options": ["1NF", "2NF", "3NF", "BCNF"],
+      "correctAnswer": "2NF"
+    },
+    {
+      "id": "dbms-4",
+      "question": "A foreign key references the _____ of another table.",
+      "options": ["Any column", "Primary key", "Index only", "Row number"],
+      "correctAnswer": "Primary key"
+    },
+    {
+      "id": "dbms-5",
+      "question": "Which join returns all rows from both tables, matching where possible?",
+      "options": ["INNER JOIN", "LEFT JOIN", "FULL OUTER JOIN", "CROSS JOIN"],
+      "correctAnswer": "FULL OUTER JOIN"
+    },
+    {
+      "id": "dbms-6",
+      "question": "In indexing, a B-tree is primarily used to:",
+      "options": ["Encrypt data", "Speed up search and range queries", "Backup tables", "Denormalize schemas"],
+      "correctAnswer": "Speed up search and range queries"
+    },
+    {
+      "id": "dbms-7",
+      "question": "Which isolation level may allow non-repeatable reads?",
+      "options": ["Serializable", "Repeatable Read", "Read Committed", "Serializable snapshot"],
+      "correctAnswer": "Read Committed"
+    },
+    {
+      "id": "dbms-8",
+      "question": "What is a logical unit of work in a DBMS that must complete fully or not at all?",
+      "options": ["Schema", "Transaction", "View", "Trigger"],
+      "correctAnswer": "Transaction"
+    }
+  ],
+  "OS": [
+    {
+      "id": "os-1",
+      "question": "Which scheduling algorithm can cause starvation for long jobs?",
+      "options": ["Round Robin", "Shortest Job First (SJF)", "FCFS", "Multilevel Queue only"],
+      "correctAnswer": "Shortest Job First (SJF)"
+    },
+    {
+      "id": "os-2",
+      "question": "What is a critical section in concurrent programming?",
+      "options": [
+        "Code that must not be interrupted",
+        "Code accessing shared resources that must run atomically",
+        "The kernel entry point",
+        "A section of virtual memory"
+      ],
+      "correctAnswer": "Code accessing shared resources that must run atomically"
+    },
+    {
+      "id": "os-3",
+      "question": "Virtual memory primarily helps with:",
+      "options": ["Faster CPU clocks", "Running processes larger than physical RAM", "GPU rendering", "Disk encryption"],
+      "correctAnswer": "Running processes larger than physical RAM"
+    },
+    {
+      "id": "os-4",
+      "question": "A deadlock occurs when processes:",
+      "options": [
+        "Finish too quickly",
+        "Wait on each other in a circular chain holding resources",
+        "Use only user-level threads",
+        "Run on a single core"
+      ],
+      "correctAnswer": "Wait on each other in a circular chain holding resources"
+    },
+    {
+      "id": "os-5",
+      "question": "Which is NOT typically stored in a Process Control Block (PCB)?",
+      "options": ["Program counter", "CPU registers", "Source code of the program", "Process state"],
+      "correctAnswer": "Source code of the program"
+    },
+    {
+      "id": "os-6",
+      "question": "Paging avoids which problem of segmentation?",
+      "options": ["External fragmentation", "Internal fragmentation only", "Deadlock", "Thrashing definition"],
+      "correctAnswer": "External fragmentation"
+    },
+    {
+      "id": "os-7",
+      "question": "In Unix-like systems, a fork() system call creates:",
+      "options": ["A new thread only", "A child process", "A new file descriptor only", "A kernel panic"],
+      "correctAnswer": "A child process"
+    },
+    {
+      "id": "os-8",
+      "question": "Thrashing in virtual memory usually means:",
+      "options": [
+        "Too many I/O devices",
+        "Excessive paging due to insufficient physical frames",
+        "CPU overheating",
+        "Successful cache hits"
+      ],
+      "correctAnswer": "Excessive paging due to insufficient physical frames"
+    }
+  ],
+  "OOPS": [
+    {
+      "id": "oops-1",
+      "question": "Which OOP pillar allows hiding internal details and exposing only what is needed?",
+      "options": ["Inheritance", "Encapsulation", "Polymorphism", "Abstraction only"],
+      "correctAnswer": "Encapsulation"
+    },
+    {
+      "id": "oops-2",
+      "question": "Method overriding in Java/C++ typically requires:",
+      "options": [
+        "Same method name and compatible signature in a subclass",
+        "Different class names only",
+        "Static methods only",
+        "Multiple inheritance always"
+      ],
+      "correctAnswer": "Same method name and compatible signature in a subclass"
+    },
+    {
+      "id": "oops-3",
+      "question": "An abstract class in OOP:",
+      "options": [
+        "Cannot be instantiated directly",
+        "Must have only static methods",
+        "Cannot have constructors",
+        "Is the same as an interface in all languages"
+      ],
+      "correctAnswer": "Cannot be instantiated directly"
+    },
+    {
+      "id": "oops-4",
+      "question": "Which relationship best describes 'Car is a Vehicle'?",
+      "options": ["Composition", "Aggregation", "Inheritance (is-a)", "Association only"],
+      "correctAnswer": "Inheritance (is-a)"
+    },
+    {
+      "id": "oops-5",
+      "question": "Polymorphism allows:",
+      "options": [
+        "Same interface, different implementations",
+        "Only compile-time binding",
+        "No method overloading",
+        "Only single inheritance"
+      ],
+      "correctAnswer": "Same interface, different implementations"
+    },
+    {
+      "id": "oops-6",
+      "question": "Composition (has-a) implies:",
+      "options": [
+        "Strong ownership; part cannot exist without whole",
+        "Weak reference always",
+        "Only inheritance",
+        "Interface implementation only"
+      ],
+      "correctAnswer": "Strong ownership; part cannot exist without whole"
+    },
+    {
+      "id": "oops-7",
+      "question": "A constructor’s main role is to:",
+      "options": [
+        "Destroy objects",
+        "Initialize object state when an instance is created",
+        "Compile the class",
+        "Define static variables only"
+      ],
+      "correctAnswer": "Initialize object state when an instance is created"
+    },
+    {
+      "id": "oops-8",
+      "question": "SOLID’s 'D' (Dependency Inversion) encourages:",
+      "options": [
+        "High-level modules depending on low-level concrete classes",
+        "Depend on abstractions, not concrete implementations",
+        "More global variables",
+        "Tight coupling"
+      ],
+      "correctAnswer": "Depend on abstractions, not concrete implementations"
+    }
+  ]
+}
