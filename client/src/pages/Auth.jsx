@@ -45,7 +45,7 @@ function Auth({ isModel = false }) {
           <div className="bg-gradient-to-br from-emerald-600 to-teal-500 text-white p-2.5 rounded-xl shadow-md">
             <BsRobot size={18} />
           </div>
-          <h2 className="font-semibold text-lg text-gray-800">InterviewIQ.AI</h2>
+          <h2 className="font-semibold text-lg text-gray-800">CareerNexa.AI</h2>
         </div>
 
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 text-center leading-snug mb-4">
