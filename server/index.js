@@ -14,7 +14,7 @@ import resumeRouter from "./routes/resume.route.js"
 
 const app = express()
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://careernexa-ai-mernclient.onrender.com",
     credentials:true
 }))
 
