@@ -16,7 +16,7 @@ import MockTestHistoryPage from "./pages/MockTestHistoryPage";
 import JobAnalyzerPage from "./pages/JobAnalyzerPage";
 import ResumeJobsPage from "./pages/ResumeJobsPage";
 
-export const ServerUrl = "https://careernexa-ai-mern.onrender.com";
+export const ServerUrl = import.meta.env.VITE_SERVER_URL || "https://careernexa-ai-mern.onrender.com";
 
 function App() {
   const dispatch = useDispatch();

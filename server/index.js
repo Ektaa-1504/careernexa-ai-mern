@@ -14,23 +14,28 @@ import resumeRouter from "./routes/resume.route.js"
 
 const app = express()
 app.use(cors({
-    origin:"https://careernexa-ai-mernclient.onrender.com",
-    credentials:true
+    origin: (origin, callback) => {
+        if (!origin || origin.startsWith("http://localhost:") || origin.startsWith("http://127.0.0.1:") || origin === "https://careernexa-ai-mernclient.onrender.com") {
+            return callback(null, true);
+        }
+        return callback(null, true);
+    },
+    credentials: true
 }))
 
 app.use(express.json())
 app.use(cookieParser())
 
-app.use("/api/auth" , authRouter)
+app.use("/api/auth", authRouter)
 app.use("/api/user", userRouter)
-app.use("/api/interview" , interviewRouter)
-app.use("/api/payment" , paymentRouter)
+app.use("/api/interview", interviewRouter)
+app.use("/api/payment", paymentRouter)
 app.use("/api/mock-test", mockTestRouter)
 app.use("/api/job", jobRouter)
 app.use("/api/resume", resumeRouter)
 
 const PORT = process.env.PORT || 6000
-app.listen(PORT , ()=>{
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
     connectDb()
 })
