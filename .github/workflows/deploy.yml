@@ -1,0 +1,58 @@
+name: CI/CD Pipeline - Docker Build & Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-verify:
+    name: 1. Build & Verify Docker Images (CI)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build & Test Backend Docker Image
+        run: |
+          docker build -t careernexa-backend:ci ./server
+
+      - name: Build & Test Frontend Docker Image
+        run: |
+          docker build -t careernexa-frontend:ci ./client
+
+  deploy-to-render:
+    name: 2. Trigger Auto-Deploy to Render (CD)
+    needs: build-and-verify
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Backend Render Deploy Hook
+        env:
+          HOOK_URL: ${{ secrets.RENDER_BACKEND_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$HOOK_URL" ]; then
+            echo "Triggering Backend Deployment on Render..."
+            curl -X POST "$HOOK_URL"
+          else
+            echo "RENDER_BACKEND_DEPLOY_HOOK secret not set, skipping backend hook."
+          fi
+
+      - name: Trigger Frontend Render Deploy Hook
+        env:
+          HOOK_URL: ${{ secrets.RENDER_FRONTEND_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$HOOK_URL" ]; then
+            echo "Triggering Frontend Deployment on Render..."
+            curl -X POST "$HOOK_URL"
+          else
+            echo "RENDER_FRONTEND_DEPLOY_HOOK secret not set, skipping frontend hook."
+          fi
