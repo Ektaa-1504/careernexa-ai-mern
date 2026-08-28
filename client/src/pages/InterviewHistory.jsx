@@ -9,25 +9,29 @@ import PageShell from '../components/PageShell'
 
 function InterviewHistory() {
     const [interviews, setInterviews] = useState([])
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
     useEffect(() => {
         const getMyInterviews = async () => {
             try {
                 const result = await axios.get(ServerUrl + "/api/interview/get-interview", { withCredentials: true })
-
-                setInterviews(result.data)
-
+                const data = Array.isArray(result.data)
+                    ? result.data
+                    : (Array.isArray(result.data?.interviews) ? result.data.interviews : []);
+                setInterviews(data)
             } catch (error) {
                 console.log(error)
+                setInterviews([])
+            } finally {
+                setLoading(false)
             }
-
         }
 
         getMyInterviews()
-
     }, [])
 
+    const safeInterviews = Array.isArray(interviews) ? interviews : [];
 
     return (
         <MainLayout>
@@ -48,23 +52,25 @@ function InterviewHistory() {
                         <p className="text-sm text-gray-500 mt-2 text-base">
                             Track your past interviews and performance reports
                         </p>
-
                     </div>
                 </div>
 
-
-                {interviews.length === 0 ?
+                {loading ? (
+                    <div className="flex items-center justify-center py-12">
+                        <p className="text-gray-500 flex items-center gap-2">
+                            <span className="inline-block w-5 h-5 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin" />
+                            Loading interviews…
+                        </p>
+                    </div>
+                ) : safeInterviews.length === 0 ? (
                     <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 text-center">
                         <p className="text-sm text-gray-500">
                             No interviews found. Start your first interview.
                         </p>
-
                     </div>
-
-                    :
-
+                ) : (
                     <div className='grid gap-6'>
-                        {interviews.map((item, index) => (
+                        {safeInterviews.map((item, index) => (
                             <motion.div
                                 key={item._id}
                                 initial={{ opacity: 0, x: -20 }}
@@ -95,7 +101,7 @@ function InterviewHistory() {
                                         {/* SCORE */}
                                         <div className="text-right">
                                             <p className="text-xl font-bold text-emerald-600">
-                                                {item.finalScore || 0}/10
+                                                {Number(item.finalScore || 0).toFixed(1)}/10
                                             </p>
                                             <p className="text-xs text-gray-400">
                                                 Overall Score
@@ -112,16 +118,13 @@ function InterviewHistory() {
                                             {item.status}
                                         </span>
 
-
                                     </div>
                                 </div>
 
                             </motion.div>
-                        ))
-                        }
-
+                        ))}
                     </div>
-                }
+                )}
             </div>
 
         </div>

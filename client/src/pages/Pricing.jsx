@@ -77,7 +77,7 @@ function Pricing() {
       
 
       const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_ScvHv5t6AidR2o",
       amount: result.data.amount,
       currency: "INR",
       name: "InterviewIQ.AI",

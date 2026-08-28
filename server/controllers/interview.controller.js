@@ -388,16 +388,8 @@ export const getMyInterviews = async (req, res) => {
 
     const interviews = await Interview.find({ userId: req.userId })
       .sort({ createdAt: -1 })
-      .limit(10)
+      .limit(20)
       .select("role experience mode finalScore status createdAt");
-
-    // 🔹 empty case handle
-    if (!interviews.length) {
-      return res.status(200).json({
-        message: "No interviews found",
-        interviews: [],
-      });
-    }
 
     return res.status(200).json(interviews);
   } catch (error) {
